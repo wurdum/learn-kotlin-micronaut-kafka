@@ -11,20 +11,34 @@ version = "0.1"
 group = "org.wurdum"
 
 val kotlinVersion = project.properties.get("kotlinVersion")
+val confluentVersion = project.properties.get("confluentVersion")
+
 repositories {
     mavenCentral()
+    maven("https://packages.confluent.io/maven")
 }
 
 dependencies {
     ksp("io.micronaut:micronaut-http-validation")
     ksp("io.micronaut.serde:micronaut-serde-processor")
+
+    implementation("io.micronaut.kafka:micronaut-kafka")
+    implementation("io.micronaut.serde:micronaut-serde-jackson")
+
+    implementation("org.apache.avro:avro:1.12.0")
+    implementation("io.confluent:kafka-schema-rules:${confluentVersion}")
+    implementation("io.confluent:kafka-avro-serializer:${confluentVersion}")
+
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
+
     compileOnly("io.micronaut:micronaut-http-client")
+
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+
     testImplementation("io.micronaut:micronaut-http-client")
 }
 
@@ -64,5 +78,3 @@ micronaut {
 tasks.named<io.micronaut.gradle.docker.NativeImageDockerfile>("dockerfileNative") {
     jdkVersion = "21"
 }
-
-
