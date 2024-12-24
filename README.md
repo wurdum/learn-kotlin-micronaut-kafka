@@ -7,8 +7,6 @@ This project demonstrates the integration of Micronaut with Kafka using Kotlin. 
 - **Micronaut Framework**: Utilizes Micronaut for building a lightweight and efficient microservice.
 - **Kafka Integration**: Implements a Kafka producer and consumer to handle message streaming.
 - **Avro Serialization**: Uses Avro schemas for efficient and compact serialization of messages.
-- **In-Memory Repository**: Stores and retrieves data using an in-memory repository for demonstration purposes.
-- **Scheduled Tasks**: Demonstrates the use of scheduled tasks to produce messages at regular intervals.
 
 ## Getting Started
 
