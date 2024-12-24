@@ -13,7 +13,7 @@ This project demonstrates the integration of Micronaut with Kafka using Kotlin. 
 ### Prerequisites
 
 - Docker and Docker Compose installed on your machine.
-- Java Development Kit (JDK) installed.
+- Java Development Kit 21 (JDK) installed.
 
 ### Running the Kafka and Schema Registry
 
@@ -40,9 +40,3 @@ This project demonstrates the integration of Micronaut with Kafka using Kotlin. 
    ```bash
    ./gradlew run
    ```
-
-3. **Observe**: Check the application logs to see the Kafka producer sending messages and the consumer processing them.
-
-This example is ideal for learning how to integrate Kafka with Micronaut and handle real-time data processing in a Kotlin application.
-
-This example is ideal for learning how to integrate Kafka with Micronaut and handle real-time data processing in a Kotlin application.
