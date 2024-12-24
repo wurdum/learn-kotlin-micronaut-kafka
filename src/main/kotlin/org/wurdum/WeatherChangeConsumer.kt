@@ -12,10 +12,11 @@ class WeatherChangeConsumer(private val repository: WeatherReportRepository) {
     fun receive(weatherChange: WeatherChange) {
         val weatherReport = WeatherReport(
             location = weatherChange.location,
-            condition = weatherChange.newCondition,
+            condition = weatherChange.condition,
             temperature = weatherChange.temperature,
             timestamp = weatherChange.timestamp
         )
+
         repository.save(weatherReport)
     }
 }

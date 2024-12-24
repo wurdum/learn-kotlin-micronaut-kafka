@@ -1,23 +1,19 @@
 micronaut:
   application: name=learn-kotlin-micronaut-kafka
   server:
-    port: 8081
+    port: 7070
 
 kafka:
   bootstrap.servers: localhost:9092
   acks: all
   producers:
     default:
-      key.serializer: org.apache.kafka.common.serialization.StringSerializer
-      value.serializer: io.micronaut.configuration.kafka.serde.JsonObjectSerde
     weather-changes:
       key.serializer: org.apache.kafka.common.serialization.LongSerializer
       value.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       schema.registry.url: http://localhost:8081
   consumers:
     default:
-      key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value.deserializer: io.micronaut.configuration.kafka.serde.JsonObjectSerde
     weather-changes:
       specific.avro.reader: true
       key.deserializer: org.apache.kafka.common.serialization.LongDeserializer

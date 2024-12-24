@@ -4,8 +4,8 @@
   "namespace": "org.wurdum",
   "fields": [
     {"name": "location", "type": "string"},
-    {"name": "oldCondition", "type": "string"},
-    {"name": "newCondition", "type": "string"},
+    {"name": "condition", "type": "string"},
+    {"name": "temperature", "type": "int"},
     {"name": "timestamp", "type": "string", "logicalType": "timestamp-millis"}
   ]
 }

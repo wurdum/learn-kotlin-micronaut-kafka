@@ -1,10 +1,7 @@
 package org.wurdum
 
-import io.micronaut.configuration.kafka.annotation.KafkaClient
-import io.micronaut.configuration.kafka.annotation.Topic
 import io.micronaut.scheduling.annotation.Scheduled
 import jakarta.inject.Singleton
-import org.apache.kafka.clients.producer.RecordMetadata
 import java.time.Instant
 import kotlin.random.Random
 
@@ -15,19 +12,12 @@ class WeatherChangeProducer(private val weatherChangeClient: WeatherChangeClient
 
     @Scheduled(fixedDelay = "1s")
     fun produceWeatherChange() {
-        val location = "Location-${Random.nextInt(1, 100)}"
-        val oldCondition = conditions.random()
-        val newCondition = conditions.random()
+        val location = "Location-${Random.nextInt(1, 5)}"
+        val condition = conditions.random()
+        val temperature = Random.nextInt(-20, 40)
         val timestamp = Instant.now()
 
-        val weatherChange = WeatherChange(location, oldCondition, newCondition, timestamp)
-        weatherChangeClient.sendWeatherChange(weatherChange)
+        val weatherChange = WeatherChange(location, condition, temperature, timestamp)
+        weatherChangeClient.sendWeatherChange(Instant.now().toEpochMilli(), weatherChange)
     }
-}
-
-@KafkaClient
-interface WeatherChangeClient {
-
-    @Topic("weather-changes")
-    fun sendWeatherChange(weatherChange: WeatherChange): RecordMetadata
 }

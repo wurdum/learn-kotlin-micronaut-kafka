@@ -4,7 +4,7 @@ import io.micronaut.serde.annotation.Serdeable
 import java.time.Instant
 
 @Serdeable
-data class WeatherChange(
+data class WeatherReport(
     val location: String,
     val condition: String,
     val temperature: Int,
