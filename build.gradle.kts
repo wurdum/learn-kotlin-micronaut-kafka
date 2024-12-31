@@ -40,6 +40,7 @@ dependencies {
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     testImplementation("io.micronaut:micronaut-http-client")
+    testImplementation("org.testcontainers:kafka:1.20.4")
 }
 
 
